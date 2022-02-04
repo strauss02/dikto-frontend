@@ -18,16 +18,26 @@ function WordView(props) {
     async function getEntries() {
       console.log(params)
 
+      // if a specific word was requested..
       if (params.word) {
         let word = params.word
         const entries = await fetchWordData(word)
         setWordEntries(entries)
         setIsLoading(false)
       } else {
-        // send a number
-        const entries = await fetchRandomWord(params.part)
-        setWordEntries([entries])
-        setIsLoading(false)
+        // if a random word was requested..
+        //first, check if beggining letter was chosen
+        if (params.letter) {
+          const entries = await fetchRandomWord(params.part, params.letter)
+          setWordEntries([entries])
+          setIsLoading(false)
+        }
+        // if no beggining letter was chosen, just fetch a randomword
+        else {
+          const entries = await fetchRandomWord(params.part)
+          setWordEntries([entries])
+          setIsLoading(false)
+        }
       }
     }
     getEntries()

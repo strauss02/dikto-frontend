@@ -45,6 +45,7 @@ function App() {
           <Route path="/:word" element={<WordView />} />
           <Route path="/:word/:pos" element={<SingleWordView />} />
           <Route path="/pos/:part" element={<WordView />} />
+          <Route path="/pos/:part/:letter" element={<WordView />} />
           <Route path="/pos" element={<PosView />} />
         </Routes>
       </div>

@@ -4,6 +4,7 @@ import { Routes, Route, Link } from 'react-router-dom'
 import { Button, Input, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import LetterSelect from './LetterSelect'
+import { makeLinkPath } from '../Utils/utils'
 
 const posByNum = {
   1: 'noun',
@@ -17,6 +18,11 @@ const posByNum = {
 }
 
 function PosView() {
+  const [letter, setLetter] = React.useState('')
+
+  const handleChange = (event) => {
+    setLetter(event.target.value)
+  }
   return (
     <div>
       <Typography sx={{ color: 'white', bgcolor: '#80c7c9' }} variant="body1">
@@ -33,14 +39,15 @@ function PosView() {
       >
         {Object.entries(posByNum).map((entry) => {
           return (
-            <Link to={`/pos/${entry[0]}`}>
+            // the link would be created according to the starting letter chosen. if no letter was chosen, makeLinkPath's logic will take care of that.
+            <Link to={makeLinkPath(entry[0], letter)}>
               <Button variant="contained">{entry[1]}</Button>
             </Link>
           )
         })}
       </Box>
       <Typography> That starts with the letter...</Typography>
-      <LetterSelect></LetterSelect>
+      <LetterSelect letter={letter} handleChange={handleChange}></LetterSelect>
     </div>
   )
 }

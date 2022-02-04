@@ -22,3 +22,11 @@ export async function fetchRandomWord(pos, letter) {
   console.log(response)
   return response
 }
+
+export function makeLinkPath(pos, letter) {
+  // if (pos && letter === 'none') {
+  // return `/pos/${pos}`
+  // } else if (pos && letter) {
+  return `/pos/${pos}/${letter}`
+  // }
+}

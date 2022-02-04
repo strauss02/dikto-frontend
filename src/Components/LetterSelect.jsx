@@ -5,23 +5,18 @@ import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 
-function LetterSelect() {
-  const [letter, setLetter] = React.useState('')
-
-  const handleChange = (event) => {
-    setLetter(event.target.value)
-  }
+function LetterSelect(props) {
   return (
-    <Box sx={{ minWidth: 30, maxWidth: 70 }}>
+    <Box sx={{ minWidth: 60, maxWidth: 90 }}>
       <FormControl fullWidth>
         <InputLabel id="letter-select-label">Letter</InputLabel>
         <Select
           variant="filled"
           labelId="letter-select-label"
           id="letter-select"
-          value={letter}
+          value={props.letter}
           label="Letter"
-          onChange={handleChange}
+          onChange={props.handleChange}
         >
           <MenuItem value={'a'}>A</MenuItem>
           <MenuItem value={'b'}>B</MenuItem>
