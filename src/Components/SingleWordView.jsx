@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { API_URL } from '../Utils/config'
 import { fetchSpecificWordData, fetchWordData } from '../Utils/utils'
+import LoadingSpinner from './LoadingSpinner'
 import WordCard from './WordCard'
 function SingleWordView(props) {
   let { word, pos } = useParams()
@@ -22,7 +23,7 @@ function SingleWordView(props) {
   return wordEntry.Word ? (
     <WordCard entry={wordEntry} />
   ) : (
-    <Typography>Sorry, we couldn't find that word :(</Typography>
+    <LoadingSpinner></LoadingSpinner>
   )
 }
 

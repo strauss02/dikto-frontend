@@ -5,11 +5,14 @@ import { useEffect } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import { API_URL } from '../Utils/config'
 import { fetchRandomWord, fetchWordData } from '../Utils/utils'
+import { POS_ENUM_MAP } from '../Utils/constants'
 import WordCard from './WordCard'
+import LoadingSpinner from './LoadingSpinner'
 function WordView(props) {
   const params = useParams()
 
   const [wordEntries, setWordEntries] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     async function getEntries() {
@@ -19,24 +22,38 @@ function WordView(props) {
         let word = params.word
         const entries = await fetchWordData(word)
         setWordEntries(entries)
+        setIsLoading(false)
       } else {
-        const entries = await fetchRandomWord(2)
+        // send a number
+        const entries = await fetchRandomWord(params.part)
         setWordEntries([entries])
+        setIsLoading(false)
       }
     }
     getEntries()
   }, [])
 
   console.log(wordEntries)
-
-  return wordEntries.length !== 1 ? (
-    <div>
-      {wordEntries.map((entry) => {
-        return <WordCard entry={entry} />
-      })}
-    </div>
+  console.log(wordEntries.length)
+  console.log(wordEntries.length > 1)
+  return isLoading ? (
+    <LoadingSpinner></LoadingSpinner>
   ) : (
-    <Navigate to={`/${wordEntries[0].Word}/${wordEntries[0].Pos} `} />
+    <div>
+      {wordEntries.length === 0 && (
+        <Typography>Sorry, we couldn't find that word :( </Typography>
+      )}
+      {wordEntries.length === 1 && (
+        <Navigate to={`/${wordEntries[0].Word}/${wordEntries[0].Pos} `} />
+      )}
+      {wordEntries.length > 1 && (
+        <div>
+          {wordEntries.map((entry) => {
+            return <WordCard entry={entry} />
+          })}
+        </div>
+      )}
+    </div>
   )
 }
 
