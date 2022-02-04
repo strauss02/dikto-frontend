@@ -1,8 +1,9 @@
 import React from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 
-import { Button, Typography } from '@mui/material'
+import { Button, Input, Typography } from '@mui/material'
 import { Box } from '@mui/system'
+import LetterSelect from './LetterSelect'
 
 const posByNum = {
   1: 'noun',
@@ -38,6 +39,8 @@ function PosView() {
           )
         })}
       </Box>
+      <Typography> That starts with the letter...</Typography>
+      <LetterSelect></LetterSelect>
     </div>
   )
 }

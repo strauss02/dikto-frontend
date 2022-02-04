@@ -11,8 +11,13 @@ export async function fetchSpecificWordData(word, pos) {
 }
 
 //send a number that represents the part of speech
-export async function fetchRandomWord(pos) {
-  const answer = await fetch(`${API_URL}/pos/${pos}`)
+export async function fetchRandomWord(pos, letter) {
+  let answer
+  if (letter) {
+    answer = await fetch(`${API_URL}/pos/${pos}?letter=${letter}`)
+  } else {
+    answer = await fetch(`${API_URL}/pos/${pos}`)
+  }
   const response = await answer.json()
   console.log(response)
   return response
