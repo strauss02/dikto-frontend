@@ -8,7 +8,6 @@ function HomeButton() {
   return (
     <Box sx={{ textAlign: 'center' }}>
       <Button sx={{ mb: 20 }} onClick={() => navigate('/')}>
-        {' '}
         Back to Home
       </Button>
     </Box>

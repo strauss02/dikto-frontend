@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { Navigate, useNavigate, useParams, useLocation } from 'react-router-dom'
 import { API_URL } from '../Utils/config'
 import { fetchRandomWord, fetchWordData } from '../Utils/utils'
-import { POS_ENUM_MAP } from '../Utils/constants'
+import { ENUM_POS_MAP } from '../Utils/constants'
 import WordCard from './WordCard'
 import LoadingSpinner from './LoadingSpinner'
 function WordView(props) {

@@ -1,4 +1,4 @@
-export const POS_ENUM_MAP = {
+export const ENUM_POS_MAP = {
   1: 'n.',
   2: 'p.',
   3: 'v.',
@@ -8,3 +8,43 @@ export const POS_ENUM_MAP = {
   7: 'conj.',
   8: 'interj.',
 }
+
+export const ENUM_FULLPOS_MAP = {
+  1: 'noun',
+  2: 'pronoun',
+  3: 'verb',
+  4: 'adjective',
+  5: 'adverb',
+  6: 'preposition',
+  7: 'conjugation',
+  8: 'interjection',
+}
+
+export const ALPHABET = [
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'I',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z',
+]

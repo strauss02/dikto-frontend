@@ -1,10 +1,12 @@
 import React from 'react'
 import { Typography, Input, Button } from '@mui/material'
 import { useState } from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Box } from '@mui/system'
+
 function HomeView() {
   const [inputValue, setInputValue] = useState('')
+
   return (
     <Box
       sx={{
@@ -13,11 +15,8 @@ function HomeView() {
         alignItems: 'center',
       }}
     >
-      <Typography sx={{}} variant="h2">
-        {' '}
-        Dikto{' '}
-      </Typography>
-      <Typography sx={{}}>Vocabulary is a click away</Typography>
+      <Typography variant="h2">Dikto</Typography>
+      <Typography>Vocabulary is a click away</Typography>
       <Input
         sx={{ mt: 3 }}
         placeholder="Enter a word here"
@@ -25,7 +24,7 @@ function HomeView() {
       ></Input>
       <Link to={`/${inputValue}`}>
         <Button sx={{ mt: 3 }} variant="contained">
-          Go to word
+          Search Word
         </Button>
       </Link>
       <Link to={`/pos`}>

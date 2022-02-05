@@ -1,21 +1,10 @@
 import React from 'react'
-import { Routes, Route, Link } from 'react-router-dom'
-
-import { Button, Input, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
+import { Button, Typography } from '@mui/material'
 import { Box } from '@mui/system'
 import LetterSelect from './LetterSelect'
 import { makeLinkPath } from '../Utils/utils'
-
-const posByNum = {
-  1: 'noun',
-  2: 'pronoun',
-  3: 'verb',
-  4: 'adjective',
-  5: 'adverb',
-  6: 'preposition',
-  7: 'conjugation',
-  8: 'interjection',
-}
+import { ENUM_FULLPOS_MAP } from '../Utils/constants'
 
 function PosView() {
   const [letter, setLetter] = React.useState('')
@@ -36,7 +25,7 @@ function PosView() {
         {' '}
         Give me a random example word of a...
       </Typography>
-      {Object.entries(posByNum).map((entry, i) => {
+      {Object.entries(ENUM_FULLPOS_MAP).map((entry, i) => {
         return (
           // the link would be created according to the starting letter chosen. if no letter was chosen, makeLinkPath's logic will take care of that.
           <Link to={makeLinkPath(entry[0], letter)} key={`${entry[1]}${i}`}>
