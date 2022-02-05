@@ -7,17 +7,16 @@ import WordView from './Components/WordView'
 import HomeView from './Components/HomeView'
 import SingleWordView from './Components/SingleWordView'
 import Appbar from './Components/Appbar'
-import { red } from '@mui/material/colors'
-import { ThemeProvider, createTheme } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/material/styles'
 import PosView from './Components/PosView'
 import HomeButton from './Components/HomeButton'
-import { theme } from './theme'
+import { globalStyle, theme } from './theme'
 import GlobalStyles from '@mui/material/GlobalStyles'
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyles styles={{ a: { textDecoration: 'none' } }} />
+      <GlobalStyles styles={globalStyle} />
       <div>
         <Appbar />
         <Routes>

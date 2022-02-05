@@ -33,8 +33,12 @@ function LetterSelect(props) {
           }}
         >
           {/* Iterate over the alphabet and make a MenuItem element for each letter */}
-          {ALPHABET.map((letter) => {
-            return <MenuItem value={letter}>{letter}</MenuItem>
+          {ALPHABET.map((letter, i) => {
+            return (
+              <MenuItem key={letter + i} value={letter}>
+                {letter}
+              </MenuItem>
+            )
           })}
         </Select>
       </FormControl>

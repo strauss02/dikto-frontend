@@ -1,37 +1,34 @@
-import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import { useNavigate, useParams } from 'react-router'
-import React, { useState } from 'react'
-// full word object passed as entry
+import { useNavigate } from 'react-router'
+import React from 'react'
+
+// This components gets the whole 'word' object entry.
+// It is passed setParams as props from  'WordView' so it could trigger a rerender.
+
 function WordCard({ entry, setParams }) {
   let navigate = useNavigate()
 
-  const [track, setTrack] = useState(0)
-
   function handleWordClick(word) {
-    console.log(word)
     navigate(`/${word}`)
     setParams({ word })
-    setTrack(track + 1)
   }
 
-  // entry is used only for key creation
   function renderClickableParagraph(paragraph, entry) {
+    // Paragraph gets split into an array of words.
     return paragraph.split(/ /g).map((word, i) => (
       <span
         key={`${entry.Word}${entry.Pos}${word}${i}`}
         onClick={() => handleWordClick(word)}
       >
+        {/* a space gets added after each word */}
         {word}{' '}
       </span>
     ))
   }
-
-  // const clickableDefinition = renderClickableParagraph(entry.Definitions)
 
   return (
     <Card sx={{ minWidth: 275, m: 2 }}>
@@ -46,10 +43,6 @@ function WordCard({ entry, setParams }) {
           {renderClickableParagraph(entry.Definitions, entry)}
         </Typography>
       </CardContent>
-      <CardActions>
-        {/*  button for future use */}
-        <Button size="small"></Button>
-      </CardActions>
     </Card>
   )
 }

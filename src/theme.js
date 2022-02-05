@@ -1,5 +1,10 @@
 import { createTheme } from '@mui/material'
 
+export const globalStyle = {
+  a: { textDecoration: 'none' },
+  span: { '&:hover': { color: '#10B981', fontWeight: 500 } },
+}
+
 export const theme = createTheme({
   breakpoints: {
     values: {

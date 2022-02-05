@@ -21,21 +21,31 @@ function PosView() {
         justifyContent: 'space-around',
       }}
     >
-      <Typography sx={{}} variant="body1">
-        {' '}
+      <Typography sx={{ mt: '0.5rem' }} variant="h6">
         Give me a random example word of a...
       </Typography>
-      {Object.entries(ENUM_FULLPOS_MAP).map((entry, i) => {
-        return (
-          // the link would be created according to the starting letter chosen. if no letter was chosen, makeLinkPath's logic will take care of that.
-          <Link to={makeLinkPath(entry[0], letter)} key={`${entry[1]}${i}`}>
-            <Button sx={{ m: 1, minWidth: '8rem' }} variant="contained">
-              {entry[1]}
-            </Button>
-          </Link>
-        )
-      })}
-      <Typography> That starts with the letter...</Typography>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gridTemplateRows: 'repeat(4, 1fr)',
+          gridColumnGap: 0,
+          gridRowGap: 0,
+        }}
+      >
+        {/* Create a button for each part of speech  */}
+        {Object.entries(ENUM_FULLPOS_MAP).map((entry, i) => {
+          return (
+            <Link to={makeLinkPath(entry[0], letter)} key={`${entry[1]}${i}`}>
+              {/* //Link path is rendered dynamically according to the letter chosen, if any. */}
+              <Button sx={{ m: 1, minWidth: '8rem' }} variant="contained">
+                {entry[1]}
+              </Button>
+            </Link>
+          )
+        })}
+      </Box>
+      <Typography variant="h6"> That begins with the letter...</Typography>
       <LetterSelect letter={letter} handleChange={handleChange}></LetterSelect>
     </Box>
   )

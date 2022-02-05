@@ -1,16 +1,11 @@
-import { Typography } from '@mui/material'
-import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { API_URL } from '../Utils/config'
-import { fetchSpecificWordData, fetchWordData } from '../Utils/utils'
+import { React, useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import { fetchSpecificWordData } from '../Utils/utils'
 import LoadingSpinner from './LoadingSpinner'
 import WordCard from './WordCard'
-function SingleWordView(props) {
-  // let { word, pos } = useParams()
+function SingleWordView() {
+  // URL params are used to instruct data fetching
   const [params, setParams] = useState(useParams())
-
   const [wordEntry, setWordEntry] = useState({})
   const [isLoading, setIsLoading] = useState(true)
 
@@ -21,8 +16,7 @@ function SingleWordView(props) {
       setIsLoading(false)
     }
     getEntry()
-    console.log(wordEntry)
-  }, [])
+  }, [params])
 
   return isLoading ? (
     <LoadingSpinner></LoadingSpinner>
