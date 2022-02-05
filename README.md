@@ -46,7 +46,7 @@
 
 ## About The Project
 
-[![Dikto Screen Shot](/images/scrnsht1.png)]
+![Dikto Screen Shot](/images/scrnsht1.png)
 
 This application was built as a project in my coding course. It demonstrates the use of AWS Cloud Services, React and more.  
 Dikto is a simple, lightweight dictionary app with some cool little features.  
