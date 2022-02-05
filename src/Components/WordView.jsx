@@ -2,19 +2,31 @@ import { Typography } from '@mui/material'
 import React from 'react'
 import { useState } from 'react'
 import { useEffect } from 'react'
-import { Navigate, useNavigate, useParams } from 'react-router-dom'
+import { Navigate, useNavigate, useParams, useLocation } from 'react-router-dom'
 import { API_URL } from '../Utils/config'
 import { fetchRandomWord, fetchWordData } from '../Utils/utils'
 import { POS_ENUM_MAP } from '../Utils/constants'
 import WordCard from './WordCard'
 import LoadingSpinner from './LoadingSpinner'
 function WordView(props) {
-  const params = useParams()
+  // let params = useParams()
 
   const [wordEntries, setWordEntries] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [params, setParams] = useState(useParams())
+  // const location = useLocation()
+  // const locationCopy = location
+
+  // function checkURLChanged() {
+  //   if (locationCopy != location) {
+  //     setParams({ word: 'banana' })
+  //     console.log('urlchanged')
+  //   }
+  // }
+  // checkURLChanged()
 
   useEffect(() => {
+    console.log('RERENDER')
     async function getEntries() {
       console.log(params)
 
@@ -50,6 +62,8 @@ function WordView(props) {
     <LoadingSpinner></LoadingSpinner>
   ) : (
     <div>
+      {console.log('rerenering')}
+      {console.log(params)}
       {wordEntries.length === 0 && (
         <Typography>Sorry, we couldn't find that word :( </Typography>
       )}
@@ -58,8 +72,10 @@ function WordView(props) {
       )}
       {wordEntries.length > 1 && (
         <div>
-          {wordEntries.map((entry) => {
-            return <WordCard entry={entry} />
+          {wordEntries.map((entry, i) => {
+            return (
+              <WordCard entry={entry} key={`${entry.Word}${entry.Pos}${i}`} />
+            )
           })}
         </div>
       )}

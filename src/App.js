@@ -11,6 +11,7 @@ import Appbar from './Components/Appbar'
 import { red } from '@mui/material/colors'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
 import PosView from './Components/PosView'
+import HomeButton from './Components/HomeButton'
 
 const theme = createTheme({
   palette: {
@@ -48,6 +49,7 @@ function App() {
           <Route path="/pos/:part/:letter" element={<WordView />} />
           <Route path="/pos" element={<PosView />} />
         </Routes>
+        <HomeButton />
       </div>
     </ThemeProvider>
   )

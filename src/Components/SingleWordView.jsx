@@ -10,20 +10,22 @@ import WordCard from './WordCard'
 function SingleWordView(props) {
   let { word, pos } = useParams()
   const [wordEntry, setWordEntry] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     async function getEntry() {
       const entry = await fetchSpecificWordData(word, pos)
       setWordEntry(entry.Item)
+      setIsLoading(false)
     }
     getEntry()
     console.log(wordEntry)
   }, [])
 
-  return wordEntry.Word ? (
-    <WordCard entry={wordEntry} />
-  ) : (
+  return isLoading ? (
     <LoadingSpinner></LoadingSpinner>
+  ) : (
+    <WordCard entry={wordEntry} />
   )
 }
 
