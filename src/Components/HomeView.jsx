@@ -13,13 +13,11 @@ function HomeView() {
         alignItems: 'center',
       }}
     >
-      <Typography sx={{ color: 'white' }} variant="h2">
+      <Typography sx={{}} variant="h2">
         {' '}
         Dikto{' '}
       </Typography>
-      <Typography sx={{ color: 'white' }}>
-        Vocabulary is a click away
-      </Typography>
+      <Typography sx={{}}>Vocabulary is a click away</Typography>
       <Input
         sx={{ mt: 3 }}
         placeholder="Enter a word here"

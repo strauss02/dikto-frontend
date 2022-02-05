@@ -25,7 +25,7 @@ function PosView() {
   }
   return (
     <div>
-      <Typography sx={{ color: 'white', bgcolor: '#80c7c9' }} variant="body1">
+      <Typography sx={{}} variant="body1">
         {' '}
         Give me a random example word of a...
       </Typography>
