@@ -10,14 +10,16 @@ export async function fetchSpecificWordData(word, pos) {
   return answer.json()
 }
 
-//send a number that represents the part of speech
 export async function fetchRandomWord(pos, letter) {
+  // Returns a random word according to a certain Part of Speech. If letter argument is passed, will return a random word beggining with that letter
   let answer
   if (letter) {
     answer = await fetch(`${API_URL}/pos/${pos}?letter=${letter}`)
   } else {
     answer = await fetch(`${API_URL}/pos/${pos}`)
   }
+  // If the response is empty, json() will throw an error. We prevent that by asssuming that the error means the response is empty.
+  // Returning nothing will be interpreted as if there are no results.
   try {
     const response = await answer.json()
     return response
@@ -27,9 +29,5 @@ export async function fetchRandomWord(pos, letter) {
 }
 
 export function makeLinkPath(pos, letter) {
-  // if (pos && letter === 'none') {
-  // return `/pos/${pos}`
-  // } else if (pos && letter) {
   return `/pos/${pos}/${letter}`
-  // }
 }

@@ -1,5 +1,5 @@
 import './App.css'
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import '@fontsource/lato/300.css'
 import '@fontsource/lato/400.css'
 import '@fontsource/lato/700.css'
