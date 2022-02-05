@@ -37,11 +37,13 @@ function PosView() {
           justifyContent: 'space-around',
         }}
       >
-        {Object.entries(posByNum).map((entry) => {
+        {Object.entries(posByNum).map((entry, i) => {
           return (
             // the link would be created according to the starting letter chosen. if no letter was chosen, makeLinkPath's logic will take care of that.
-            <Link to={makeLinkPath(entry[0], letter)}>
-              <Button variant="contained">{entry[1]}</Button>
+            <Link to={makeLinkPath(entry[0], letter)} key={`${entry[1]}${i}`}>
+              <Button sx={{ m: 1 }} variant="contained">
+                {entry[1]}
+              </Button>
             </Link>
           )
         })}

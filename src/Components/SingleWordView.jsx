@@ -8,13 +8,15 @@ import { fetchSpecificWordData, fetchWordData } from '../Utils/utils'
 import LoadingSpinner from './LoadingSpinner'
 import WordCard from './WordCard'
 function SingleWordView(props) {
-  let { word, pos } = useParams()
+  // let { word, pos } = useParams()
+  const [params, setParams] = useState(useParams())
+
   const [wordEntry, setWordEntry] = useState({})
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     async function getEntry() {
-      const entry = await fetchSpecificWordData(word, pos)
+      const entry = await fetchSpecificWordData(params.word, params.pos)
       setWordEntry(entry.Item)
       setIsLoading(false)
     }
@@ -25,7 +27,7 @@ function SingleWordView(props) {
   return isLoading ? (
     <LoadingSpinner></LoadingSpinner>
   ) : (
-    <WordCard entry={wordEntry} />
+    <WordCard entry={wordEntry} setParams={setParams} />
   )
 }
 

@@ -53,7 +53,7 @@ function WordView(props) {
       }
     }
     getEntries()
-  }, [])
+  }, [params])
 
   console.log(wordEntries)
   console.log(wordEntries.length)
@@ -74,7 +74,11 @@ function WordView(props) {
         <div>
           {wordEntries.map((entry, i) => {
             return (
-              <WordCard entry={entry} key={`${entry.Word}${entry.Pos}${i}`} />
+              <WordCard
+                entry={entry}
+                setParams={setParams}
+                key={`${entry.Word}${entry.Pos}${i}`}
+              />
             )
           })}
         </div>

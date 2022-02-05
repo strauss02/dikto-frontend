@@ -4,15 +4,19 @@ import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import { useNavigate } from 'react-router'
-import React from 'react'
+import { useNavigate, useParams } from 'react-router'
+import React, { useState } from 'react'
 // full word object passed as entry
-function WordCard({ entry }) {
+function WordCard({ entry, setParams }) {
   let navigate = useNavigate()
+
+  const [track, setTrack] = useState(0)
 
   function handleWordClick(word) {
     console.log(word)
     navigate(`/${word}`)
+    setParams({ word })
+    setTrack(track + 1)
   }
 
   // entry is used only for key creation

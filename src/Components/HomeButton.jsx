@@ -6,7 +6,10 @@ function HomeButton() {
   const navigate = useNavigate()
   return (
     <div>
-      <Button onClick={() => navigate('/')}> Back to Home</Button>
+      <Button sx={{ mb: 20 }} onClick={() => navigate('/')}>
+        {' '}
+        Back to Home
+      </Button>
     </div>
   )
 }
