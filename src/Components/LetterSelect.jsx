@@ -7,7 +7,7 @@ import Select from '@mui/material/Select'
 
 function LetterSelect(props) {
   return (
-    <Box sx={{ minWidth: 60, maxWidth: 90 }}>
+    <Box sx={{ minWidth: '8rem' }}>
       <FormControl fullWidth>
         <InputLabel id="letter-select-label">Letter</InputLabel>
         <Select
@@ -17,6 +17,17 @@ function LetterSelect(props) {
           value={props.letter}
           label="Letter"
           onChange={props.handleChange}
+          MenuProps={{
+            PaperProps: { sx: { maxHeight: 180 } },
+            anchorOrigin: {
+              vertical: 'center',
+              horizontal: 'center',
+            },
+            transformOrigin: {
+              vertical: 'center',
+              horizontal: 'center',
+            },
+          }}
         >
           <MenuItem value={'a'}>A</MenuItem>
           <MenuItem value={'b'}>B</MenuItem>

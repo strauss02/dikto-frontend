@@ -18,9 +18,12 @@ export async function fetchRandomWord(pos, letter) {
   } else {
     answer = await fetch(`${API_URL}/pos/${pos}`)
   }
-  const response = await answer.json()
-  console.log(response)
-  return response
+  try {
+    const response = await answer.json()
+    return response
+  } catch {
+    return
+  }
 }
 
 export function makeLinkPath(pos, letter) {

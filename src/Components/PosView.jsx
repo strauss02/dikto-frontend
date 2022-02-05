@@ -24,33 +24,31 @@ function PosView() {
     setLetter(event.target.value)
   }
   return (
-    <div>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+      }}
+    >
       <Typography sx={{}} variant="body1">
         {' '}
         Give me a random example word of a...
       </Typography>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'space-around',
-        }}
-      >
-        {Object.entries(posByNum).map((entry, i) => {
-          return (
-            // the link would be created according to the starting letter chosen. if no letter was chosen, makeLinkPath's logic will take care of that.
-            <Link to={makeLinkPath(entry[0], letter)} key={`${entry[1]}${i}`}>
-              <Button sx={{ m: 1 }} variant="contained">
-                {entry[1]}
-              </Button>
-            </Link>
-          )
-        })}
-      </Box>
+      {Object.entries(posByNum).map((entry, i) => {
+        return (
+          // the link would be created according to the starting letter chosen. if no letter was chosen, makeLinkPath's logic will take care of that.
+          <Link to={makeLinkPath(entry[0], letter)} key={`${entry[1]}${i}`}>
+            <Button sx={{ m: 1, minWidth: '8rem' }} variant="contained">
+              {entry[1]}
+            </Button>
+          </Link>
+        )
+      })}
       <Typography> That starts with the letter...</Typography>
       <LetterSelect letter={letter} handleChange={handleChange}></LetterSelect>
-    </div>
+    </Box>
   )
 }
 

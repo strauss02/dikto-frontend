@@ -12,11 +12,13 @@ import HomeIcon from '@mui/icons-material/Home'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import MenuIcon from '@mui/icons-material/Menu'
-
 import React from 'react'
 import { ListItem } from '@mui/material'
+import { useNavigate } from 'react-router'
 
 function Appbar() {
+  const navigate = useNavigate()
+
   const [open, setOpen] = React.useState(false)
 
   const handleDrawerOpen = () => {
@@ -88,13 +90,25 @@ function Appbar() {
             height: '100%',
           }}
         >
-          <ListItem button>
+          <ListItem
+            button
+            onClick={() => {
+              navigate('/')
+              handleDrawerClose()
+            }}
+          >
             <ListItemIcon>
               <HomeIcon />
             </ListItemIcon>
             <ListItemText primary={'Home'} />
           </ListItem>
-          <ListItem button>
+          <ListItem
+            button
+            onClick={() => {
+              navigate('/pos')
+              handleDrawerClose()
+            }}
+          >
             <ListItemIcon>
               <AbcIcon />
             </ListItemIcon>

@@ -41,7 +41,7 @@ function WordView(props) {
         //first, check if beggining letter was chosen
         if (params.letter) {
           const entries = await fetchRandomWord(params.part, params.letter)
-          setWordEntries([entries])
+          entries ? setWordEntries([entries]) : setWordEntries([])
           setIsLoading(false)
         }
         // if no beggining letter was chosen, just fetch a randomword
